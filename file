@@ -1,0 +1,33 @@
+// Class representing custom exception  
+class InvalidAgeException extends Exception {  
+    public InvalidAgeException(String msg) {  
+        // calling the constructor of the parent Exception  
+        super(msg);  
+    }  
+}  
+
+// Class that uses custom exception InvalidAgeException  
+public class Main {  
+    // Method to check the age, declares the exception it might throw  
+    public int getAge(int age) throws InvalidAgeException {    
+        if (age < 18) { 
+            System.out.println("Welcome to vote");   
+            return age; // return age to avoid compilation error
+        } else {
+            throw new InvalidAgeException("Age is not valid to vote");    
+        }  
+    }
+
+    // main method
+    public static void main(String[] args) {
+        Main m = new Main();
+        try {
+            int i = m.getAge(18);  
+            System.out.println("Age: " + i);
+        } catch (InvalidAgeException e2) {
+            e2.printStackTrace();
+            System.out.println(e2.getMessage());
+        }
+    }
+}
+ 
